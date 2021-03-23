@@ -1,0 +1,34 @@
+{% extends 'baseregistration.html' %}
+{% block title %}Dirección{% endblock %}
+{% block content %}
+<div class="form-row">
+    <div class="form-group  col-md-6">
+        <label for="inputEmail4">E-mail: </label>
+        {{ address.email }}
+    </div>
+    <div class="form-group col-md-4">
+        <label for="inputAddress">Dirección: </label>
+        {{ address.domicilio }}
+    </div>
+    <div class="form-group col-md-2">
+        <label for="inputAddress">País: </label>
+        {{ address.country.name }}
+    </div>
+</div>
+<div class="form-row">
+    <div class="form-group col-md-6">
+        <label for="inputCity">Ciudad: </label>
+        {{ address.city }}
+    </div>
+    <div class="form-group col-md-4">
+        <label for="inputState">Provincia: </label>
+        {{ address.provorstate }}
+    </div>
+    <div class="form-group col-md-2">
+        <label for="inputZip">Código postal: </label>
+        {{ address.zipcode }}
+    </div>
+</div>
+<a class="btn btn-primary" href="{% url 'addressUpdate' address.id %}">Editar</a>
+
+{% endblock %}

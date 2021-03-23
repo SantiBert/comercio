@@ -1,0 +1,82 @@
+{% extends 'baseregistration.html' %}
+{% block title %}Perfil{% endblock %}
+{% load static %}
+{% block content %}
+<div class="row mt-3">
+    <div class="col">
+        <h3>Editar Perfil</h3>
+        <form action="" method="post" enctype="multipart/form-data">{% csrf_token %}
+            <div class="form-group row">
+                <div class="col-12 col-md-2 mb-3">
+                    {% if request.user.Profile.image %}
+                    <img src="{{request.user.Profile.image.url}}" width='45%' class="img-fluid">
+                    <p class="mt-1">¿Borrar?
+                        <input type="checkbox" name="image-clear" id="image-clear_id">
+                        <label for="image-clear_id">Limpiar</label><br>
+                    </p>
+                    {% else %}
+                    <img src="{% static 'img/no-avatar.png' %}" width='45%' class="img-fluid">
+                    {% endif %}
+                </div>
+                <div class="col-12 col-md-2 mb-3">
+                    <p>
+                        Modificar:
+                        <input type="file" name="image" accept="image/*" id="id_image">
+                    </p>
+                </div>
+            </div>
+            <div class="form-group row">
+                <div class="col-12 col-md-5 mb-3">
+                    <label for="nombre">Nombre y apellido</label>
+                    <input type="email" value="{{user.get_full_name}}" class="form-control mt-3" readonly>
+                    <a href="{% url 'nameUpdate' %}" class="btn btn-primary">Editar</a>
+                </div>
+                <div class="col-12 col-md-5 mb-3">
+                    <label for="pass">E-mail</label>
+                    <input type="email" value="{{request.user.email}}" class="form-control mt-3" readonly>
+                    <a href="{% url 'emailUpdate' %}" class="btn btn-primary">Editar</a>
+                </div>
+            </div>
+            <div class="form-group row">
+                <div class="col-12 col-md-4 mb-3">
+                    <label for="mensaje">Teléfono</label>
+                    {{ form.phone }}
+                </div>
+                <div class="col-12 col-md-4 mb-3">
+                    <label>Domicilio</label>
+                    {{ form.domicilio }}
+                </div>
+                <div class="col-12 col-md-4 mb-3">
+                    <label for="pais">Ciudad</label>
+                    {{ form.city }}
+                </div>
+            </div>
+            <div class="form-group row">
+                <div class="col-12 col-md-4 mb-3">
+                    <label for="mensaje">País</label>
+                    {{ form.country }}
+                </div>
+                <div class="col-12 col-md-4 mb-3">
+                    <label>Provincia/Estado</label>
+                    {{ form.provorstate }}
+                </div>
+                <div class="col-12 col-md-4 mb-3">
+                    <label for="pais">Código postal</label>
+                    {{ form.zipcode }}
+                </div>
+            </div>
+
+            <div class="form-group row">
+                <div class="col-12 text-center">
+                    <div class="row justify-content-center">
+                        <div class="col-12 col-sm-9 col-md-4">
+                            <button class="btn btn-primary btn-block" type="submit">Editar</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </form>
+    </div>
+</div>
+{% endblock %}

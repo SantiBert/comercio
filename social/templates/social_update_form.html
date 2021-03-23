@@ -1,0 +1,36 @@
+{% extends 'baseregistration.html' %}
+{% block title %}Editar {{object.name}}{% endblock %}
+{% block content %}
+<div class="contact-title">
+    <h2 class="text-center">Editar {% if object.name == 'Instagram' %}
+        <button class="btn btn-dribbble">
+            <i class="fab fa-instagram">{{object.name}}</i>
+        </button>
+        <!--Facebook-->
+        {% elif object.name == 'Facebook' %}
+        <button class="btn btn-facebook">
+            <i class="fab fa-facebook">{{object.name}}</i>
+        </button>
+        <!--Twiter-->
+        {% elif object.name == 'Twitter' %}
+        <button class="btn btn-twitter">
+            <i class="fab fa-twitter">{{object.name}}</i>
+        </button>
+        <!--Youtube-->
+        {% elif object.name == 'Youtube' %}
+        <button class="btn btn-youtube">
+            <i class="fab fa-youtube">{{object.name}}</i>
+        </button>
+        <!--Telegram-->
+        {% elif object.name == 'Telegram' %}
+        <button class="btn btn-behance">
+            <i class="fab fa-telegram">{{object.name}}</i>
+        </button>
+        {% endif %}
+    </h2>
+</div>
+<form action="" method="post">{% csrf_token %}
+    {{form.as_p}}
+    <p><input type="submit" class="btn btn-primary btn-block" value="Editar"></p>
+</form>
+{% endblock %}

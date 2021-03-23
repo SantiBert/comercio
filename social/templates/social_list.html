@@ -1,0 +1,65 @@
+{% extends 'baseregistration.html' %}
+{% block title %}Lista de contactos{% endblock %}
+{% block content %}
+<div class="contact-title">
+    <h2 class="text-center">Lista de contactos</h2>
+</div>
+<table class="table bg-light">
+    <thead>
+        <tr>
+            <th class="text-center">#</th>
+            <th>Red social</th>
+            <th><i class="fab fa-whatsapp p-1"></i>Link</th>
+            <th class="text-right">Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for social in socials %}
+        <tr>
+            <td class="text-center">{{ forloop.counter }}</td>
+            <td>
+                <!--Instagram-->
+                {% if social.name == 'Instagram' %}
+                <button class="btn btn-dribbble">
+                    <i class="fab fa-instagram">{{ social.name }}</i>
+                </button>
+                <!--Facebook-->
+                {% elif social.name == 'Facebook' %}
+                <button class="btn btn-facebook">
+                    <i class="fab fa-facebook">{{ social.name }}</i>
+                </button>
+                <!--Twiter-->
+                {% elif social.name == 'Twitter' %}
+                <button class="btn btn-twitter">
+                    <i class="fab fa-twitter">{{ social.name }}</i>
+                </button>
+                <!--Youtube-->
+                {% elif social.name == 'Youtube' %}
+                <button class="btn btn-youtube">
+                    <i class="fab fa-youtube">{{ social.name }}</i>
+                </button>
+                <!--Telegram-->
+                {% elif social.name == 'Telegram' %}
+                <button class="btn btn-behance">
+                    <i class="fab fa-telegram">{{ social.name }}</i>
+                </button>
+                <!--Linkedin-->
+                {% elif social.name == 'Linkedin' %}
+                <button class="btn btn-linkedin">
+                    <i class="fab fa-linkedin">{{ social.name }}</i>
+                </button>
+                {% endif %}
+            </td>
+            <td>{{social.link}}</td>
+            <td class="td-actions text-right">
+                <a type="button" rel="tooltip" href="{% url 'socialUpdate' social.id %}"
+                    class="btn btn-success btn-icon btn-sm " data-original-title="" title="">
+                    <i class="fas fa-cogs"></i>
+                </a>
+            </td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+
+{% endblock %}
